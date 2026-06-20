@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrigir Redação - Nota 1000</title>
+    <!-- O CSS está agora integrado abaixo -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* 1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+        -------------------------------------------------- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap');
+
+        :root {
+            --primary-blue: #2d64f6;
+            --secondary-blue: #1a4ccd;
+            --accent-color: #ffc107;
+            --text-dark: #212529;
+            --text-secondary: #6c757d;
+            --text-white: #ffffff;
+            --background-body: #f8f9fa;
+            --background-card: #ffffff;
+            --border-gray: #dee2e6;
+            --color-success: #28a745;
+            --color-danger: #dc3545;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Nunito', sans-serif;
+            --border-radius: 8px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 2. ESTILOS DO CORPO E LAYOUT
+        -------------------------------------------------- */
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-dark);
+            background-color: var(--background-body);
+            line-height: 1.6;
+            background: linear-gradient(135deg, rgba(232, 240, 254, 0.5) 0%, rgba(248, 249, 250, 0.5) 50%, rgba(232, 240, 254, 0.5) 100%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        main {
+            padding: var(--spacing-lg) 0;
+        }
+
+        /* 3. HEADER
+        -------------------------------------------------- */
+        header {
+            background-color: var(--background-card);
+            padding: var(--spacing-md) var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-img img {
+            height: 45px;
+            width: auto;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-right a {
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        .header-right a:hover {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        /* 4. COMPONENTES GLOBAIS (Botões, Cards, etc.)
+        -------------------------------------------------- */
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            box-shadow: 0 2px 5px rgba(45, 100, 246, 0.3);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(45, 100, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--background-card);
+            color: var(--primary-blue);
+            border: 2px solid var(--border-gray);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* 5. PÁGINA DE PRÁTICA E CORREÇÃO
+        -------------------------------------------------- */
+        .practice-container {
+            background-color: var(--background-card);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .practice-container h1 {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .choice-cards {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .choice-card {
+            flex-basis: 350px;
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            color: var(--primary-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .choice-card h2 {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .suggested-theme-display,
+        .pick-theme-display {
+            display: none; /* Controlado por JS */
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border-gray);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #suggestedThemeText {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: var(--spacing-md) 0;
+        }
+
+        .theme-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            max-width: 500px;
+            margin: 0 auto var(--spacing-lg) auto;
+        }
+
+        .theme-options select,
+        .theme-options input {
+            width: 100%;
+            padding: var(--spacing-md);
+            font-size: 1rem;
+            border: 1px solid var(--border-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .theme-options span {
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+        
+        .theme-input-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg) auto;
+            text-align: center;
+        }
+        .theme-input-container label {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        .theme-input-container input {
+            width: 100%;
+            padding: var(--spacing-md);
+            font-size: 1rem;
+            border: 1px solid var(--border-gray);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+        .theme-input-container input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(45, 100, 246, 0.2);
+        }
+
+        /* 6. SEÇÃO DE ESCRITA E UPLOAD
+        -------------------------------------------------- */
+        #chosenTheme {
+            font-family: var(--font-secondary);
+            color: var(--text-dark);
+            font-weight: 800; /* BOLD */
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            border-left: 4px solid var(--primary-blue);
+            background-color: #f9f9f9;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            background-color: #fdfdff;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-gray);
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .timer-settings {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .timer-settings input {
+            width: 70px;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-gray);
+        }
+
+        .timer-settings button {
+            padding: var(--spacing-sm);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            color: var(--text-secondary);
+        }
+        .timer-settings button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .upload-section-practice {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            border: 2px dashed var(--border-gray);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+        .upload-section-practice:hover {
+            border-color: var(--primary-blue);
+            background-color: #fdfdff;
+        }
+
+        #practiceImagePreview {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            display: none;
+            margin-top: var(--spacing-md);
+        }
+        
+        .separator-text {
+            text-align: center;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            color: var(--text-secondary);
+            margin: var(--spacing-lg) 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            padding: 0;
+        }
+
+        /* 7. EDITOR DE TEXTO E CONTROLES
+        -------------------------------------------------- */
+        .edit-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .edit-controls button {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid var(--border-gray);
+            background-color: #f9f9f9;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .edit-controls button:hover:not(:disabled) {
+            background-color: #f0f0f0;
+            border-color: #aaa;
+            color: var(--text-dark);
+        }
+
+        .edit-controls button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #practiceContentEditableText {
+            width: 100%;
+            min-height: 400px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            line-height: 1.7;
+            background-color: var(--background-card);
+        }
+        #practiceContentEditableText:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(45, 100, 246, 0.2);
+        }
+        #practiceContentEditableText::placeholder {
+            color: #ccc;
+        }
+        
+        .finish-button-container {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        /* 8. RESULTADO DA CORREÇÃO
+        -------------------------------------------------- */
+        .result-section {
+            display: none; /* Controlado por JS */
+        }
+        
+        .final-score-container {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+        .final-score-container h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.9;
+        }
+        .final-score-value {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .result-section h2 {
+            font-family: var(--font-secondary);
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary-blue);
+        }
+        .competency-score {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            background-color: #fcfcfc;
+        }
+        .competency-score strong {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-basis: 80%;
+            text-align: left;
+        }
+        .competency-score span {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-success);
+            flex-basis: 20%;
+            text-align: right;
+        }
+        .competency-feedback {
+            margin-bottom: var(--spacing-lg);
+        }
+        .competency-feedback p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-sm);
+            padding-left: var(--spacing-md);
+            border-left: 3px solid var(--border-gray);
+            text-align: left;
+        }
+
+        /* 9. INDICADOR DE CARREGAMENTO
+        -------------------------------------------------- */
+        #loadingIndicator {
+            display: none;
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* 10. RESPONSIVIDADE
+        -------------------------------------------------- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            .choice-cards {
+                flex-direction: column;
+            }
+            .timer-controls {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrigir Redação - Nota 1000</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="corrigir-redacao">
+
+    <div class="container">
+        <header>
+            <div class="header-content-wrapper">
+            <!-- LOGO -->
+            <a href="index.html" class="logo-img" aria-label="Nota 1000 ia">
+            <img src="imagens/nota1000logo.jpg" alt="Logo Nota 1000">
+            </a>
+
+
+            <!-- NAV padronizado (com id para o mobile) -->
+            <nav id="siteNav" class="nav" aria-label="Principal">
+            <ul>
+            <li><a href="minhas-redacoes.html">Minhas Redações</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            </ul>
+            </nav>
+
+
+            <!-- LADO DIREITO: Login + Hamburguer (mobile) -->
+            <div class="header-right">
+            <a href="login.html" id="login-button" class="login-button">Já sou aluno</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-controls="siteNav" aria-expanded="false">
+            <span></span><span></span><span></span>
+            </button>
+            </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="correctionContainer" class="practice-container">
+                <h1>Corrija sua Redação Pronta</h1>
+                <p class="subtitle">Insira o tema, envie o arquivo da sua redação e receba uma correção detalhada.</p>
+
+                <div class="theme-input-container">
+                    <label for="themeInput">Qual foi o tema da sua redação?</label>
+                    <input type="text" id="themeInput" placeholder="Ex: A persistência da violência contra a mulher...">
+                </div>
+
+                <div id="uploadPracticeArea" class="upload-section-practice">
+                    <input type="file" id="practiceFileInput" accept="image/*,.pdf" style="display:none;">
+                    <label for="practiceFileInput" style="cursor: pointer;">
+                        <span class="material-icons" style="font-size: 40px;">upload_file</span>
+                        <strong>Envie sua redação</strong>
+                        <p>Clique aqui para enviar a foto ou PDF. O texto será transcrito para a caixa abaixo.</p>
+                    </label>
+                    <img id="practiceImagePreview" src="#" alt="Pré-visualização da redação" style="display:none;">
+                </div>
+                
+                <div id="separator" class="separator-text" style="display: none;">TEXTO TRANSCRITO (EDITE SE NECESSÁRIO)</div>
+
+                <div id="writingArea" style="display: none;">
+                     <div class="edit-controls">
+                        <button id="btnPracticeUndo" disabled><span class="material-icons">undo</span> Desfazer</button>
+                        <button id="btnPracticeRedo" disabled><span class="material-icons">redo</span> Refazer</button>
+                        <button class="btn btn-secondary" id="btnPracticeToggleGrammar" disabled>
+                            <span class="suggestion-button-content">
+                                <span class="material-icons">spellcheck</span> <span id="practiceGrammarButtonText">Revisar Gramática</span>
+                            </span>
+                        </button>
+                        <button class="btn btn-secondary" id="btnPracticeRevert" disabled>
+                            <span class="suggestion-button-content">
+                                <span class="material-icons">history</span> Reverter ao Original
+                            </span>
+                        </button>
+                    </div>
+                    <div id="practiceContentEditableText" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" placeholder="O texto da sua redação aparecerá aqui após o envio..."></div>
+                </div>
+                
+                <div class="finish-button-container">
+                    <button class="btn btn-primary" id="btnFinishAndCorrect" disabled>Finalizar e Corrigir</button>
+                </div>
+            </section>
+
+            <div id="loadingIndicator"></div>
+
+            <div class="result-section" id="correctionResult">
+                <div class="final-score-container">
+                    <h3>Nota Final:</h3>
+                    <div id="finalScore" class="final-score-value">---</div>
+                </div>
+                <h2>Análise Detalhada por Competência</h2>
+                <div id="competenciesContainer"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
+</html>
+
+<script>
+(function(){
+  // Tenta ligar o menu; retorna true se conseguiu
+  function wireUpHamburger() {
+    var btn = document.getElementById('hamburgerBtn');
+    var nav = document.getElementById('siteNav');
+    if (!btn || !nav) return false;
+
+    // Evita ligar duas vezes
+    if (btn.dataset.bound === '1') return true;
+    btn.dataset.bound = '1';
+
+    // Acessibilidade inicial
+    btn.setAttribute('aria-controls', 'siteNav');
+    btn.setAttribute('aria-expanded', 'false');
+
+    // Click no botão: abre/fecha
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = nav.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Click fora: fecha
+    document.addEventListener('click', function (e) {
+      if (!nav.classList.contains('open')) return;
+      if (e.target.closest('#siteNav') || e.target.closest('#hamburgerBtn')) return;
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Navegar por um link do menu: fecha
+    nav.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    return true;
+  }
+
+  // 1) Tenta ligar quando o DOM estiver pronto
+  if (document.readyState !== 'loading') {
+    if (!wireUpHamburger()) retryWireUp();
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){
+      if (!wireUpHamburger()) retryWireUp();
+    });
+  }
+
+  // 2) Se o header é injetado depois (via fetch), observamos mudanças no DOM
+  function retryWireUp() {
+    // Retry leve por 2s (a cada 200ms)
+    var tries = 0, maxTries = 10;
+    var iv = setInterval(function(){
+      tries++;
+      if (wireUpHamburger() || tries >= maxTries) clearInterval(iv);
+    }, 200);
+  }
+
+  // 3) MutationObserver: se adicionarem #hamburgerBtn ou #siteNav depois, ligamos na hora
+  var mo = new MutationObserver(function(){
+    wireUpHamburger();
+  });
+  mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+})();
+</script>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Redação - Nota 1000</title>
+    
+    <link rel="stylesheet" href="style.css?v=12"> 
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <section id="dynamic-data" style="display:none;"
+        data-tema="A persistência da violência contra a mulher na sociedade brasileira"
+        data-nota-final="920"
+        data-data-envio="20/02/2025"
+        data-redacao-usuario="A persistência da violência contra a mulher na sociedade brasileira, apesar da legislação, demanda uma analise profunda sobre os entraves socioculturais que perpetuam essa problemática. Historicamente, o machismo estrutural enraizado na cultura nacional, aliado à ineficácia das políticas públicas, perpetua um ciclo de violência que impede o pleno desenvolvimento social. E imprescindível, portanto, que medidas educacionais e legais mais rigorosas sejam implemtadas para desconstruir essa realidade. Um dos principais desafios reside na naturalização da violência. Muitas vezes, a violência psicológica e moral é subestimada, dificultando a denúncia e a intervenção. A falta de representatividade feminina em cargos de poder e a persistência de narrativas misóginas na mídia contribuem para a perpetuação desse cenário. Além disso, a dependência econômica frequentemente impede que vítimas abandonem seus lares, mesmo em situações de risco. A proposta de intervenção deve englobar a criação de programas de empoderamento econômico para mulheres em vulnerabilidade, oferecendo capacitação profissional e acesso facilitado a microcrédito. No âmbito educacional, é crucial a inclusão de disciplinas obrigatórias nas escolas, desde o ensino fundamental, que abordem igualdade de gênero e respeito mútuo, combatendo o machismo desde a raiz. Por fim, o poder judiciário deve acelerar os processos e aplicar penas mais severas aos agressores, enviando uma mensagem clara de tolerância zero à violência. Somente através de uma abordagem multidisciplinar e com o engajamento de toda a sociedade será possível reverter esse quadro de persistência da violência contra a mulher."
+        data-competencias-notas='[{"nome":"Comp 1","nota":180, "descricao":"Domínio da Norma Padrão"}, {"nome":"Comp 2","nota":200, "descricao":"Compreensão do Tema e Tese"}, {"nome":"Comp 3","nota":180, "descricao":"Seleção e Organização de Argumentos"}, {"nome":"Comp 4","nota":200, "descricao":"Mecanismos Linguísticos"}, {"nome":"Comp 5","nota":160, "descricao":"Proposta de Intervenção"}]'
+        data-comentarios-avaliador='[{"data":"20/02/2025","tipo":"negativo","texto":"A norma padrão pode ser aprimorada em alguns pontos específicos de concordância e colocação pronominal."},{"data":"21/02/2025","tipo":"positivo","texto":"Ótimo uso de repertório sociocultural. O tema foi abordado de forma completa e profunda."},{"data":"21/02/2025","tipo":"positivo","texto":"Excelente articulação da proposta de intervenção, abordando os agentes de forma clara."}]'>
+    </section>
+<script src="common.js"></script>
+<script src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary-color: #28a745; /* Cor da Nota Circular: VERDE */
+            --secondary-color: #1a4ccd; 
+            --background-light: #F8F9FA;
+            --background-card: #FFFFFF;
+            --text-dark: #212529;
+            --text-muted: #6C757D;
+            --border-light: #E9ECEF;
+            --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.05); 
+            --border-radius: 12px;
+            --paper-line-color: #f0f0f0;
+            
+            /* Degradê Roxo/Azul para Borda da Folha e Gráfico */
+            --gradient-start: #2D64F6; 
+            --gradient-end: #9C27B0;   
+            
+            /* Cores dos Comentários */
+            --color-positive: #1B5E20; 
+            --color-negative: #B71C1C; 
+            --bg-positive: #E8F5E9;
+            --bg-negative: #FFEBEE;
+        }
+
+        /* Reset e Tipografia base */
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background-color: var(--background-light) !important;
+            color: var(--text-dark) !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        h1, h2, h3, h4 { color: var(--text-dark) !important; line-height: 1.2 !important; }
+
+        /* Estilos do CABEÇALHO PADRÃO */
+        header { 
+            background-color: var(--background-card);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        .header-content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+        }
+        .logo-img img { height: 100px; }
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        /* BOTÃO EXPORTAR REMOVIDO */
+        .login-button {
+            text-decoration: none;
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border: 1px solid var(--primary-color);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .hamburger { display: none; } 
+        
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .header-right { display: flex; align-items: center; }
+            .hamburger { display: block; border: none; background: none; cursor: pointer; }
+            .hamburger span { background: var(--text-dark); display: block; width: 25px; height: 3px; margin: 4px 0; transition: 0.4s; }
+            .nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px; 
+                right: 0;
+                width: 100%;
+                background-color: var(--background-card);
+                border-top: 1px solid var(--border-light);
+                box-shadow: var(--shadow-md);
+                padding: 10px 0;
+            }
+            .nav.active ul { flex-direction: column; align-items: center; gap: 10px; }
+            .nav.active ul li { width: 100%; text-align: center; padding: 10px 0; }
+        }
+
+
+        /* 1. LAYOUT GERAL E CARTÕES */
+        .container {
+            max-width: 1400px !important;
+            margin: 24px auto !important; 
+            padding: 0 16px !important; 
+        }
+
+        .card {
+            background-color: var(--background-card) !important;
+            border-radius: var(--border-radius) !important;
+            padding: 24px !important; 
+            box-shadow: var(--shadow-card) !important;
+            margin-bottom: 24px !important; 
+            border: 1px solid var(--border-light) !important; 
+            box-sizing: border-box !important; 
+        }
+        
+        /* 2. HEADER DA PÁGINA (TEMA) */
+        .detalhe-header {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important; 
+            margin-bottom: 24px !important; 
+            text-align: center !important; 
+        }
+        .detalhe-header h1 {
+            font-size: 1.8rem !important; 
+            margin-bottom: 8px !important; 
+            font-weight: 700 !important;
+            color: var(--text-dark) !important; 
+        }
+        .detalhe-header p {
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+            margin-top: 5px !important;
+        }
+
+
+        .detalhe-grid {
+            display: grid !important;
+            gap: 24px !important;
+            grid-template-areas:
+                "redacao-area analise-area" 
+                "comentarios-area comentarios-area"
+                !important;
+            grid-template-columns: 2fr 1fr !important; 
+            width: 100% !important;
+        }
+
+        @media (max-width: 992px) {
+            .detalhe-grid {
+                grid-template-areas:
+                    "redacao-area"
+                    "analise-area"
+                    "comentarios-area"
+                    !important;
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* 3. NOTA FINAL (Circular) */
+        .nota-geral {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 20px !important;
+            padding-bottom: 0px !important; 
+            margin-bottom: 24px !important;
+        }
+        .nota-circulo {
+            position: relative !important;
+            width: 150px !important; 
+            height: 150px !important;
+        }
+        .nota-circulo-svg {
+            transform: rotate(-90deg);
+        }
+        .progress-ring-track {
+            stroke: var(--border-light);
+            transition: none !important;
+        }
+        .progress-ring-fill {
+            stroke: var(--primary-color); /* VERDE */
+            transition: stroke-dashoffset 2s ease-out; /* Animação */
+        }
+        .nota-valor {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            font-size: 2.5rem !important; 
+            font-weight: 800 !important;
+            color: var(--primary-color) !important; /* VERDE */
+            opacity: 1 !important; /* MUDANÇA: Garante visibilidade */
+            transition: none !important; 
+        }
+
+        /* 4. REDAÇÃO (Estilo Folha com Degradê) */
+        .redacao-texto-card {
+            grid-area: redacao-area;
+            padding: 0 !important; 
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .redacao-sheet {
+            background-color: white !important;
+            padding: 30px 40px !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid var(--border-light) !important;
+            border-radius: 8px !important;
+            overflow-x: hidden !important;
+            position: relative !important;
+            min-height: 800px !important;
+            
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 25px,
+                var(--paper-line-color) 25px,
+                var(--paper-line-color) 26px
+            ) !important;
+            background-position: 0 45px !important; 
+            background-repeat: repeat-y !important;
+
+            border-left: 5px solid transparent !important;
+            border-image: linear-gradient(to bottom, var(--gradient-end), var(--gradient-start)) 1 !important; 
+            border-image-slice: 1 !important;
+        }
+        .redacao-sheet h3 { margin-bottom: 25px !important; }
+        .redacao-sheet p {
+            white-space: pre-wrap !important;
+            line-height: 26px !important;
+            text-indent: 40px !important;
+            margin-bottom: 0 !important;
+            font-size: 1.05rem !important;
+        }
+
+        /* ESTILO PARA HIGHLIGHT DE ERROS */
+        .error-highlight {
+            background-color: #ffdddd; 
+            color: #dc3545; 
+            border-bottom: 2px dashed #dc3545;
+            cursor: help;
+            position: relative;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            padding: 2px 0;
+            line-height: 1.5; 
+        }
+        .error-highlight:hover {
+            background-color: #ffcccc;
+        }
+        .error-highlight::after {
+            content: "Sugestão: " attr(data-correction); 
+            visibility: hidden;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 10;
+        }
+        .error-highlight:hover::after {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 5. ANÁLISE COMBINADA */
+        .analise-combinada-card {
+            grid-area: analise-area;
+            padding: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: sticky !important;
+            top: 100px !important;
+            height: fit-content !important; 
+        }
+
+        /* Estilos da Lista de Competências */
+        .competencias-card {
+            background-color: var(--background-card) !important;
+            border-radius: var(--border-radius) !important;
+            padding: 24px !important; 
+            box-shadow: var(--shadow-card) !important;
+            border: 1px solid var(--border-light) !important;
+            margin-bottom: 24px !important;
+        }
+        .competencia-item {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 12px 0 !important;
+            border-bottom: 1px dashed var(--border-light) !important;
+            font-size: 1rem !important;
+        }
+
+
+        .graficos-card {
+            background-color: var(--background-card) !important;
+            border-radius: var(--border-radius) !important;
+            padding: 24px !important; 
+            box-shadow: var(--shadow-card) !important;
+            border: 1px solid var(--border-light) !important;
+        }
+        
+        @media (max-width: 992px) {
+            .analise-combinada-card { position: relative !important; top: auto !important; }
+        }
+
+        /* 6. COMENTÁRIOS (AGORA ALINHADO À ESQUERDA E LARGURA TOTAL DO GRID) */
+        .comentarios-card { 
+            grid-area: comentarios-area; 
+            max-width: none !important; /* Ocupa a largura total da área de grid */
+            margin: 0 0 24px 0 !important; /* Margem apenas abaixo */
+        }
+        
+        .comentario-meta { 
+            font-size: 0.9rem !important; 
+            color: var(--text-muted) !important; 
+            display: none; /* ESCONDE A DATA */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content-wrapper">
+            <a href="index.html" class="logo-img" aria-label="Nota 1000 ia">
+                <img src="imagens/nota1000logo.jpg" alt="Logo Nota 1000 ia">
+            </a>
+
+            <nav id="siteNav" class="nav" aria-label="Principal">
+                <ul>
+                    <li><a href="minhas-redacoes.html">Minhas Redações</a></li>
+                    <li><a href="planos.html">Planos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <a href="login.html" id="login-button" class="login-button">Já sou aluno</a>
+
+                <button class="hamburger" id="hamburgerBtn"
+                        aria-label="Abrir menu"
+                        aria-controls="siteNav"
+                        aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="detalhe-header">
+            <div>
+                <h1 id="tema-redacao"></h1>
+                <p><span id="data-envio"></span></p>
+            </div>
+        </div>
+
+        <div class="detalhe-grid">
+
+            <div class="redacao-texto-card">
+                <div class="redacao-sheet">
+                    <h3>Sua Redação</h3>
+                    <p id="redacao-completa">
+                        Carregando texto da redação...
+                    </p>
+                </div>
+            </div>
+
+            <div class="analise-combinada-card">
+                
+                <div class="card nota-geral"> 
+                    <div class="nota-indicador-wrapper">
+                        <div class="nota-circulo" id="nota-circulo-principal" data-nota="0">
+                            <svg width="100%" height="100%" viewBox="0 0 100 100" class="nota-circulo-svg">
+                                <circle class="progress-ring-track" cx="50" cy="50" r="45" stroke-width="8" fill="transparent"></circle>
+                                <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke-width="8" fill="transparent" stroke-linecap="round"></circle>
+                            </svg>
+                            <span class="nota-valor" id="nota-final-valor">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nota-info">
+                        <h2>Sua Nota Final</h2>
+                        <p>Total baseado nas 5 competências do ENEM.</p>
+                    </div>
+                </div>
+
+                <div class="competencias-card">
+                    <h3>Pontuação por Competência</h3>
+                    <div class="competencias-lista" id="competencias-lista">
+                        </div>
+                </div>
+
+                <div class="graficos-card">
+                    <h3>Comparativo de Desempenho</h3>
+                    <div>
+                        <canvas id="competenciaChart"></canvas>
+                    </div>
+                </div>
+                
+            </div> <div class="card comentarios-card">
+                <h3>Comentários</h3>
+                <div id="comentarios-avaliador-lista">
+                    </div>
+            </div>
+
+        </div> </div> <footer>
+        &copy; 2025 Nota 1000 - Todos os direitos reservados.
+    </footer>
+
+    <script>
+    
+    // Função para aplicar highlight nos erros gramaticais (SIMULADA)
+    function applyGrammarHighlight(text) {
+        // Mapeamento de palavras incorretas para a correção: apenas erros gramaticais (acento, digitação)
+        const errors = [
+            // Erro: 'implemtadas' (falta de letra: digitação)
+            { word: 'implemtadas', correction: 'implementadas' },
+            // Erro: 'E imprescindível' (falta de acento)
+            { word: 'E imprescindível', correction: 'É imprescindível' },
+            // Erro: 'analise' (falta de acento)
+            { word: 'analise', correction: 'análise' }
+        ];
+
+        let highlightedText = text;
+        
+        errors.forEach(error => {
+            // Cria uma Regex global e case-insensitive para substituir todas as ocorrências
+            // Usamos (\b) para garantir que seja uma palavra completa, exceto no caso de 'E imprescindível'
+            
+            if (error.word.includes(' ')) { // Para a expressão 'E imprescindível'
+                const regex = new RegExp(error.word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
+                highlightedText = highlightedText.replace(regex, 
+                    `<span class="error-highlight" data-correction="${error.correction}">$&</span>`
+                );
+            } else { // Para palavras simples (typos e acentos)
+                 const regex = new RegExp('\\b' + error.word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '\\b', 'gi');
+                highlightedText = highlightedText.replace(regex, 
+                    `<span class="error-highlight" data-correction="${error.correction}">$&</span>`
+                );
+            }
+        });
+
+        return highlightedText;
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const dataContainer = document.getElementById('dynamic-data');
+        const temaRedacao = dataContainer.dataset.tema; 
+        const notaFinal = parseInt(dataContainer.dataset.notaFinal); 
+        const dataEnvio = dataContainer.dataset.dataEnvio;
+        const redacaoCompleta = dataContainer.dataset.redacaoUsuario;
+        const competenciasData = JSON.parse(dataContainer.dataset.competenciasNotas);
+        const comentariosData = JSON.parse(dataContainer.dataset.comentariosAvaliador);
+        
+        const rootStyles = getComputedStyle(document.documentElement);
+        
+        // 1. INJEÇÃO DE DADOS SIMPLES (Título e Data)
+        document.getElementById('tema-redacao').textContent = temaRedacao;
+        document.getElementById('data-envio').textContent = `Enviada em: ${dataEnvio}`;
+        document.getElementById('redacao-completa').innerHTML = applyGrammarHighlight(redacaoCompleta); 
+
+        // 2. INJEÇÃO DE NOTAS POR COMPETÊNCIA (RESTABELECIDO)
+        const listaComp = document.getElementById('competencias-lista');
+        const labelsParaGrafico = [];
+        const notasParaGrafico = [];
+        listaComp.innerHTML = '';
+        
+        competenciasData.forEach((comp, index) => {
+            const item = document.createElement('div');
+            item.className = 'competencia-item';
+            item.setAttribute('data-nota', comp.nota);
+            item.innerHTML = `
+                <div class="competencia-nome-box">
+                    <span class="competencia-numero">${index + 1}</span>
+                    <span>${comp.descricao}</span>
+                </div>
+                <span class="competencia-nota">${comp.nota}</span>
+            `;
+            listaComp.appendChild(item);
+            
+            labelsParaGrafico.push(comp.nome);
+            notasParaGrafico.push(comp.nota);
+        });
+
+        // 3. INJEÇÃO DE COMENTÁRIOS (SEM DATA)
+        const listaComentarios = document.getElementById('comentarios-avaliador-lista');
+        listaComentarios.innerHTML = '';
+
+        comentariosData.forEach(comentario => {
+            const item = document.createElement('div');
+            item.className = 'comentario-item';
+            item.setAttribute('data-tipo', comentario.tipo); 
+            
+            // REMOÇÃO COMPLETA DA DATA (comentario-meta escondida via CSS)
+            item.innerHTML = `
+                <div class="comentario-meta"></div> 
+                <p>${comentario.texto}</p>
+            `;
+            listaComentarios.appendChild(item);
+        });
+
+
+        // 4. ANIMAÇÃO DA NOTA CIRCULAR
+        const circulo = document.getElementById('nota-circulo-principal');
+        const fill = circulo.querySelector('.progress-ring-fill');
+        const valor = document.getElementById('nota-final-valor');
+        
+        const raio = 45;
+        const circunferencia = 2 * Math.PI * raio;
+        fill.style.strokeDasharray = `${circunferencia} ${circunferencia}`;
+        fill.style.strokeDashoffset = circunferencia; 
+        
+        const porcentagem = (notaFinal / 1000);
+        const offsetFinal = circunferencia - (porcentagem * circunferencia);
+
+        // Dispara a animação (após um pequeno delay)
+        setTimeout(() => {
+            fill.style.strokeDashoffset = offsetFinal;
+        }, 100); 
+
+        // Animação de contagem do valor
+        let startTime = null;
+        const duration = 2000;
+
+        function animateNota(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const progressPercentage = Math.min(progress / duration, 1);
+            
+            const currentNota = Math.round(progressPercentage * notaFinal);
+            
+            valor.textContent = currentNota;
+
+            if (progressPercentage === 1) {
+                return;
+            }
+
+            requestAnimationFrame(animateNota);
+        }
+
+        setTimeout(() => {
+            requestAnimationFrame(animateNota);
+        }, 500); 
+
+
+        // 5. GRÁFICO DE BARRAS (Chart.js)
+        const ctx = document.getElementById('competenciaChart');
+        
+        function getGradient(chart) {
+            const { ctx, chartArea } = chart;
+            if (!chartArea) {
+                return null;
+            }
+            
+            const startColor = rootStyles.getPropertyValue('--gradient-start').trim();
+            const endColor = rootStyles.getPropertyValue('--gradient-end').trim();
+            
+            const gradient = ctx.createLinearGradient(0, 0, chartArea.right, 0);
+            gradient.addColorStop(0, startColor);
+            gradient.addColorStop(1, endColor);
+            return gradient;
+        }
+
+
+        if (ctx) {
+            const maxNota = 200;
+            let chartInstance = null;
+            
+            const gradientPlugin = {
+                beforeDraw: (chart) => {
+                    if (chart.options.plugins.gradientFill.gradient === null) {
+                        chart.options.plugins.gradientFill.gradient = getGradient(chart);
+                    }
+                }
+            };
+
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labelsParaGrafico,
+                    datasets: [{
+                        label: 'Nota por Competência',
+                        data: notasParaGrafico,
+                        backgroundColor: (context) => {
+                            if (context.chart.options.plugins.gradientFill.gradient) {
+                                return context.chart.options.plugins.gradientFill.gradient;
+                            }
+                            return 'var(--gradient-start)'; 
+                        },
+                        borderWidth: 1,
+                        borderRadius: 6 
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y', 
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: false }
+                        },
+                        x: {
+                            beginAtZero: true,
+                            max: maxNota,
+                            ticks: {
+                                stepSize: 40,
+                                callback: function(value) { return value; }
+                            },
+                            grid: { color: 'var(--border-light)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: false },
+                        gradientFill: {
+                            gradient: null
+                        }
+                    }
+                },
+                plugins: [gradientPlugin]
+            });
+        }
+    });
+    </script>
+    
+    <script>
+        (function() {
+            var hamburger = document.getElementById('hamburgerBtn');
+            var nav = document.getElementById('siteNav');
+            
+            if (hamburger && nav) {
+                 hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    var expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+                    hamburger.setAttribute('aria-expanded', !expanded);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

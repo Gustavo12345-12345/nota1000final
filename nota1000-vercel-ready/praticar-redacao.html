@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticar Redação - Nota 1000</title>
+    <link rel="stylesheet" href="style.css?v=11">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="praticar-redacao">
+
+    <div class="container">
+        <header>
+            <!-- O cabeçalho comum será carregado aqui -->
+        </header>
+
+        <main>
+            <section id="step1-theme-choice" class="practice-container step-container active">
+                <h1>Como você quer escolher seu tema?</h1>
+                <p class="subtitle">Selecione uma opção para definirmos o foco da sua redação.</p>
+                <div class="choice-cards">
+                    <div class="choice-card" id="choiceSuggestTheme">
+                        <span class="material-icons card-icon">psychology</span>
+                        <h2>Tema Aleatório</h2>
+                        <p>Receba um tema aleatório do nosso banco de dados com mais de 30 opções de provas anteriores e temas atuais.</p>
+                    </div>
+                    <div class="choice-card" id="choicePickTheme">
+                        <span class="material-icons card-icon">edit_note</span>
+                        <h2>Escolher Tema</h2>
+                        <p>Selecione um tema de uma lista ou digite um tema personalizado de sua preferência para praticar.</p>
+                    </div>
+                </div>
+                <div id="suggestedThemeDisplay" class="suggested-theme-display">
+                    <h3>Tema Sugerido:</h3>
+                    <p id="suggestedThemeText"></p>
+                    <div class="suggested-theme-actions">
+                        <button class="btn btn-secondary" id="btnResuggestTheme">Sugerir Outro</button>
+                        <button class="btn btn-primary" id="btnAcceptTheme">Aceitar Tema</button>
+                    </div>
+                </div>
+                <div id="pickThemeDisplay" class="pick-theme-display">
+                     <div class="theme-options">
+                        <select id="themeSelect">
+                            <option value="">Selecione um tema da lista...</option>
+                            <option value="Desafios para a valorização de comunidades e povos tradicionais no Brasil">Desafios para a valorização de povos tradicionais no Brasil</option>
+                            <option value="Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil">Invisibilidade e registro civil: acesso à cidadania no Brasil</option>
+                            <option value="O estigma associado às doenças mentais na sociedade brasileira">O estigma associado às doenças mentais na sociedade</option>
+                            <option value="Democratização do acesso ao cinema no Brasil">Democratização do acesso ao cinema no Brasil</option>
+                        </select>
+                        <span>OU</span>
+                        <input type="text" id="customThemeInput" placeholder="Insira seu tema personalizado aqui">
+                    </div>
+                    <button class="btn btn-primary" id="btnConfirmTheme">Confirmar Tema</button>
+                </div>
+            </section>
+
+            <section id="step2-method-choice" class="practice-container step-container" style="display: none;">
+                <h1>Como você prefere escrever?</h1>
+                <p class="subtitle">Escolha se você vai digitar no computador ou escrever no papel para escanear.</p>
+                <div class="choice-cards">
+                    <div class="choice-card" id="choiceWriteOnComputer">
+                        <span class="material-icons card-icon">laptop_mac</span>
+                        <h2>Escrever Digitalmente</h2>
+                        <p>Use nosso editor de texto integrado com timer para escrever sua redação diretamente aqui no site.</p>
+                    </div>
+                    <div class="choice-card" id="choiceWriteOnPaper">
+                        <span class="material-icons card-icon">edit</span>
+                        <h2>Escrever no Papel</h2>
+                        <p>Escreva sua redação à mão, tire uma foto ou escaneie, e envie o arquivo para nossa IA transcrever e corrigir.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="writingContainer" class="practice-container" style="display: none;">
+                <h2 id="chosenTheme"></h2>
+                
+                <div class="timer-controls">
+                    <div class="timer-display" id="timerDisplay">30:00</div>
+                    <div class="timer-settings">
+                        <label for="timerInput">Tempo (minutos):</label>
+                        <input type="number" id="timerInput" value="30" min="1">
+                        <button id="btnTimerStart"><span class="material-icons">play_arrow</span></button>
+                        <button id="btnTimerPause" style="display: none;"><span class="material-icons">pause</span></button>
+                        <button id="btnTimerReset"><span class="material-icons">replay</span></button>
+                    </div>
+                </div>
+
+                <div id="uploadPracticeArea" class="upload-section-practice" style="display: none;">
+                    <input type="file" id="practiceFileInput" accept="image/*,.pdf" style="display: none;">
+                     <label for="practiceFileInput" style="cursor: pointer; display: block; padding: 20px;">
+                        <span class="material-icons" style="font-size: 40px;">upload_file</span>
+                        <strong>Envie sua redação manuscrita</strong>
+                        <p>Clique aqui para enviar a foto ou documento. O texto será transcrito para a caixa abaixo.</p>
+                    </label>
+                    <img id="practiceImagePreview" src="#" alt="Pré-visualização da redação" style="display: none;">
+                </div>
+                
+                <div id="separator" class="separator-text" style="display: none;">TEXTO TRANSCRITO (EDITE SE NECESSÁRIO)</div>
+
+                <div id="writingArea">
+                    <div class="edit-controls">
+                        <button id="btnPracticeUndo" disabled><span class="material-icons">undo</span> Desfazer</button>
+                        <button id="btnPracticeRedo" disabled><span class="material-icons">redo</span> Refazer</button>
+                        <button class="btn btn-secondary" id="btnPracticeToggleGrammar" disabled>
+                            <span class="suggestion-button-content">
+                                <span class="material-icons">spellcheck</span> <span id="practiceGrammarButtonText">Revisar Gramática</span>
+                            </span>
+                        </button>
+                        <button class="btn btn-secondary" id="btnPracticeRevert" disabled>
+                            <span class="suggestion-button-content">
+                                <span class="material-icons">history</span> Reverter ao Original
+                            </span>
+                        </button>
+                    </div>
+                    <div id="practiceContentEditableText" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" placeholder="Comece a escrever ou cole o texto aqui..."></div>
+                </div>
+                
+                <div class="finish-button-container">
+                    <button class="btn btn-primary" id="btnFinishAndCorrect">Finalizar e Corrigir</button>
+                </div>
+            </section>
+
+            <div id="loadingIndicator"></div>
+
+            <div class="result-section" id="correctionResult">
+                <div class="final-score-container">
+                    <h3>Nota Final:</h3>
+                    <div id="finalScore" class="final-score-value">---</div>
+                </div>
+                <h2>Análise Detalhada por Competência</h2>
+                <div id="competenciesContainer"></div>
+            </div>
+        </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+(function(){
+  // Tenta ligar o menu; retorna true se conseguiu
+  function wireUpHamburger() {
+    var btn = document.getElementById('hamburgerBtn');
+    var nav = document.getElementById('siteNav');
+    if (!btn || !nav) return false;
+
+    // Evita ligar duas vezes
+    if (btn.dataset.bound === '1') return true;
+    btn.dataset.bound = '1';
+
+    // Acessibilidade inicial
+    btn.setAttribute('aria-controls', 'siteNav');
+    btn.setAttribute('aria-expanded', 'false');
+
+    // Click no botão: abre/fecha
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = nav.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Click fora: fecha
+    document.addEventListener('click', function (e) {
+      if (!nav.classList.contains('open')) return;
+      if (e.target.closest('#siteNav') || e.target.closest('#hamburgerBtn')) return;
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Navegar por um link do menu: fecha
+    nav.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    return true;
+  }
+
+  // 1) Tenta ligar quando o DOM estiver pronto
+  if (document.readyState !== 'loading') {
+    if (!wireUpHamburger()) retryWireUp();
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){
+      if (!wireUpHamburger()) retryWireUp();
+    });
+  }
+
+  // 2) Se o header é injetado depois (via fetch), observamos mudanças no DOM
+  function retryWireUp() {
+    // Retry leve por 2s (a cada 200ms)
+    var tries = 0, maxTries = 10;
+    var iv = setInterval(function(){
+      tries++;
+      if (wireUpHamburger() || tries >= maxTries) clearInterval(iv);
+    }, 200);
+  }
+
+  // 3) MutationObserver: se adicionarem #hamburgerBtn ou #siteNav depois, ligamos na hora
+  var mo = new MutationObserver(function(){
+    wireUpHamburger();
+  });
+  mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+})();
+</script>
