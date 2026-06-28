@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nota 1000</title>
+    <link rel="stylesheet" href="style.css?v=11">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            </header>
+
+        <main>
+            <div class="login-container">
+                <div class="login-card" id="loginCard">
+                    
+                    <div id="loginFormSection" class="auth-section active">
+                        <h1>Acesse sua Conta</h1>
+                        <p class="subtitle">Entre com seu email e senha ou utilize sua conta Google.</p>
+
+                        <form id="loginForm">
+                            <div class="input-group">
+                                <label for="loginEmail">Email</label>
+                                <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="loginPassword">Senha</label>
+                                <input type="password" id="loginPassword" placeholder="••••••••" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnSignIn">Entrar</button>
+                            <a href="#" id="forgotPasswordLink" class="small-link">Esqueceu a senha?</a>
+                        </form>
+
+                        <div class="divider"><span>ou</span></div>
+
+                        <button id="google-login-btn" class="btn btn-google">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo">
+                            Entrar com Google
+                        </button>
+                        
+                        <p class="switch-link-container">Não tem conta? <a href="#" id="showRegisterLink">Cadastre-se</a></p>
+                    </div>
+
+                    <div id="registerFormSection" class="auth-section">
+                        <h1>Crie sua Conta</h1>
+                        <p class="subtitle">Preencha os campos para começar a usar a plataforma.</p>
+
+                        <form id="registerForm">
+                            <div class="input-group">
+                                <label for="registerEmail">Email</label>
+                                <input type="email" id="registerEmail" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="registerPassword">Senha</label>
+                                <input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" required minlength="6">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnSignUp">Criar Conta</button>
+                        </form>
+                        
+                        <p class="switch-link-container">Já tem conta? <a href="#" id="showLoginLink">Fazer Login</a></p>
+                    </div>
+                    
+                    <div id="forgotPasswordSection" class="auth-section">
+                        <h1>Recuperar Senha</h1>
+                        <p class="subtitle">Informe seu email para receber o link de recuperação de senha.</p>
+                        
+                        <form id="forgotPasswordForm">
+                            <div class="input-group">
+                                <label for="forgotEmail">Email</label>
+                                <input type="email" id="forgotEmail" placeholder="seu@email.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnResetPassword">Enviar Link</button>
+                        </form>
+                        
+                        <p class="switch-link-container"><a href="#" id="backToLoginLink">Voltar para Login</a></p>
+                    </div>
+
+                    <p id="login-status" class="login-status" role="alert" aria-live="assertive"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

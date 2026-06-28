@@ -1,0 +1,75 @@
+<div class="header-content-wrapper">
+  <a href="index.html" class="logo-img" aria-label="Nota 1000 ia">
+    <img src="imagens/nota1000logo.jpg" alt="Logo Nota 1000 ia"> 
+  </a>
+
+  <nav id="siteNav" class="nav" aria-label="Principal">
+    <ul>
+      <li><a href="minhas-redacoes.html">Minhas Redações</a></li>
+      <li><a href="planos.html">Planos</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-right">
+    
+    <a href="login.html" id="login-button" class="login-button">Já sou aluno</a>
+
+    <div id="user-profile" class="user-profile" style="display: none;">
+      <img id="user-photo" class="user-avatar" 
+           src="https://placehold.co/45x45/2d64f6/FFF?text=N1k" 
+           alt="Foto de Perfil">
+      
+      <div class="profile-dropdown">
+        <span id="user-name" class="dropdown-name">Utilizador</span>
+        <a href="minhas-redacoes.html" class="dropdown-link">Minhas Redações</a>
+        <button id="logout-button" class="dropdown-link logout-btn">Sair</button>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburgerBtn"
+            aria-label="Abrir menu"
+            aria-controls="siteNav"
+            aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const btn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('siteNav');
+
+    if (!btn || !nav) return;
+
+    // Abre/fecha ao clicar no ícone
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = nav.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Fecha ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('open')) return;
+      const clickInsideNav = nav.contains(e.target);
+      const clickOnBtn = btn.contains(e.target);
+      if (!clickInsideNav && !clickOnBtn) {
+        nav.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Fecha ao navegar por um link do menu
+    nav.addEventListener('click', (e) => {
+      var a = e.target.closest('a');
+      if (!a) return;
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  })();
+</script>
