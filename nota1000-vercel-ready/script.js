@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- API Gemini Configuration ---
     // A chave da API NUNCA fica no front-end. Todas as chamadas passam pelo
     // endpoint serverless /api/gemini-proxy, que guarda a chave no servidor.
-    const VISION_MODEL = 'gemini-2.0-flash';
-    const TEXT_MODEL = 'gemini-2.0-flash';
+    // Use gemini-2.5-flash for a stable, cost-effective, and free-tier supported model
+const VISION_MODEL = 'gemini-2.5-flash'; 
+const TEXT_MODEL = 'gemini-2.5-flash';
 
     // Helper único para chamar a IA através do nosso backend (sem expor chave).
     async function callGeminiProxy(model, requestBody) {
