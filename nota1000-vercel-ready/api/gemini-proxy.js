@@ -1,3 +1,5 @@
+export const maxDuration = 60; // Tells Vercel to wait up to 60 seconds
+
 export default async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -7,7 +9,7 @@ export default async function handler(req, res) {
   try {
     const { model, requestBody } = req.body;
     
-    // This looks for the secret key you will put in Vercel
+    // This looks for the secret key you put in Vercel
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
