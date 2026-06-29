@@ -4,6 +4,7 @@
   "private": true,
   "description": "Nota1000 - Corretor de redação ENEM com IA",
   "dependencies": {
-    "stripe": "^19.2.0"
+    "stripe": "^19.2.0",
+    "openai": "^4.50.0"
   }
 }
